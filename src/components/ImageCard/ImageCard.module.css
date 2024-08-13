@@ -1,0 +1,14 @@
+.img {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+  height: auto;
+  width: 360px;
+  height: 360px;
+}
+.section {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  border: 1px solid #808080;
+}
