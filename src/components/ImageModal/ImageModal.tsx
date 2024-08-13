@@ -1,7 +1,21 @@
 import ReactModal from "react-modal";
+import { FC } from "react";
+import { ModalImage } from "../../types";
 ReactModal.setAppElement("#root");
 
-export default function ImageModal({ modalIsOpen, closeModal, src, alt }) {
+interface ImageModalProps {
+  modalIsOpen: boolean;
+  closeModal: () => void;
+  src: ModalImage["regular"];
+  alt: ModalImage["description"];
+}
+
+const ImageModal: FC<ImageModalProps> = ({
+  modalIsOpen,
+  closeModal,
+  src,
+  alt,
+}) => {
   return (
     <ReactModal
       isOpen={modalIsOpen}
@@ -23,7 +37,6 @@ export default function ImageModal({ modalIsOpen, closeModal, src, alt }) {
           padding: "0",
           height: "auto",
           width: "500px",
-          height: "500px",
           overflow: "hidden",
         },
       }}
@@ -35,4 +48,5 @@ export default function ImageModal({ modalIsOpen, closeModal, src, alt }) {
       />
     </ReactModal>
   );
-}
+};
+export default ImageModal;

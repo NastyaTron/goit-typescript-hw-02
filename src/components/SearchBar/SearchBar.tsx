@@ -1,9 +1,19 @@
-import { Field, Form, Formik } from "formik";
+import { FC } from "react";
+import { Field, Form, Formik, FormikHelpers } from "formik";
 import toast, { Toaster } from "react-hot-toast";
 import css from "./SearchBar.module.css";
 
-export default function SearchBar({ onSearch }) {
-  const handleSubmit = (values, actions) => {
+interface SearchBarProps {
+  onSearch: (newQuery: string) => void;
+}
+interface FormValues {
+  text: string;
+}
+const SearchBar: FC<SearchBarProps> = ({ onSearch }) => {
+  const handleSubmit = (
+    values: FormValues,
+    actions: FormikHelpers<FormValues>
+  ) => {
     if (values.text.trim() === "") {
       toast.error("Please enter search term!");
       return;
@@ -31,4 +41,5 @@ export default function SearchBar({ onSearch }) {
       </Formik>
     </header>
   );
-}
+};
+export default SearchBar;
